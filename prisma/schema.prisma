@@ -1,0 +1,83 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+model users{
+  id Int @id @default(autoincrement())
+  firstname String @db.VarChar(100)
+  lastname String @db.VarChar(100)
+  email String @db.VarChar(100)
+  password String @db.VarChar(100)
+  otp String @db.VarChar(100)
+  comments comments[]
+  created_at DateTime @default(now()) @db.Timestamp(0)
+  updated_at DateTime @default(now()) @db.Timestamp(0) @updatedAt
+} 
+model comments{
+  id Int @id @default(autoincrement())  
+  user_id Int
+  news_list_id Int
+  news_list news_list @relation(fields: [news_list_id],references: [id],onDelete: Restrict,onUpdate: Cascade)
+  users users @relation(fields: [user_id],references: [id],onDelete: Restrict,onUpdate: Cascade)
+  description String @db.LongText
+}
+model category{
+  id Int @id @default(autoincrement())
+  name String @db.VarChar(100)
+  news_list news_list[]
+  created_at DateTime @default(now()) @db.Timestamp(0)
+  updated_at DateTime @default(now()) @db.Timestamp(0) @updatedAt
+}
+model news_list{
+  id Int @id @default(autoincrement())
+  title String @db.VarChar(600)
+  img1 String @db.VarChar(600)
+  img2 String @db.VarChar(600)
+  img3 String @db.VarChar(600)
+  img4 String @db.VarChar(600)
+  keywords String @db.VarChar(600)
+  long_des String @db.LongText
+  type String @db.VarChar(600)
+  category_id Int
+  category category @relation(fields: [category_id],references: [id],onDelete: Restrict,onUpdate: Cascade)
+  comments comments[]
+  created_at DateTime @default(now()) @db.Timestamp(0)
+  updated_at DateTime @default(now()) @db.Timestamp(0) @updatedAt
+
+}
+model socials{
+  id Int @id @default(autoincrement())
+  facebook String @db.VarChar(600)
+  linkedin String @db.VarChar(600)
+  twiter String @db.VarChar(600)
+  youtube String @db.VarChar(600)
+  about String @db.VarChar(600)
+  address String @db.VarChar(600)
+  created_at DateTime @default(now()) @db.Timestamp(0)
+  updated_at DateTime @default(now()) @db.Timestamp(0) @updatedAt
+
+
+
+}
+model subscribers{
+    id Int @id @default(autoincrement())
+    email String @db.VarChar(100)
+    created_at DateTime @default(now()) @db.Timestamp(0)
+    updated_at DateTime @default(now()) @db.Timestamp(0) @updatedAt
+
+}
+
+model policies{
+      id Int @id @default(autoincrement())
+      long_des String @db.LongText
+      type String @db.VarChar(100)
+
+
+}
