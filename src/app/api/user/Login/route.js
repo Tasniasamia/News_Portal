@@ -15,6 +15,7 @@ export const POST=async(req,res)=>{
         }
         else{
             let token=await jwtCreateToken(finduser['email'],finduser['id'])
+            console.log(token);
             let expiretime=new Date(Date.now()+(24*60*60*1000))
             const cookieString=`token=${token}; expire=${expiretime};path=/`;
             

@@ -1,12 +1,12 @@
 import PopularList from "@/components/PopularList";
-import NewsDetails from "@/components/NewsDetails";
 import PlainLayout from "@/components/Master/Plain-Layout";
 import CommentsList from "@/components/CommentsList";
+import NewsDetails from "@/Components/NewsDetails";
 
 async function getData(id) {
     let Details = (await (await fetch(`${process.env.HOST}/api/News_list/details?id=${id}`)).json())['data']
     let Popular = (await (await fetch(`${process.env.HOST}/api/News_list/type?type=Popular`)).json())['data']
-    let Comments = (await (await fetch(`${process.env.HOST}/api/Comments/News/?postID=${id}`)).json())['data']
+    let Comments = (await (await fetch(`${process.env.HOST}/api/Comments/News/?news_list_id=${id}`)).json())['data']
     return {Popular:Popular,Details:Details,Comments:Comments}
 }
 

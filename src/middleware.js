@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
 import { verifyToken } from "./Utility/JWTcreate";
+import Cookies from "js-cookie";
 
 export const middleware = async (req, res) => {
   let cookievalue = req.cookies.get('token');
-
+  console.log("package cookie",Cookies.get('token'))
   if (cookievalue) {
     let tokenvalue = await verifyToken(cookievalue['value']);
     

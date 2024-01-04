@@ -15,8 +15,8 @@ const CommentsList = (props) => {
                             props.data.map((item,i)=>{
                                 return (
                                     <li className="list-group-item bg-transparent">
-                                        <h6 className="text-dark"><i className="bi bi-person-circle"></i> {item['users']['firstName']}</h6>
-                                        <p className="text-secondary">{item['descriptions']}</p>
+                                        <h6 className="text-dark"><i className="bi bi-person-circle"></i> {item['users']['firstname']}</h6>
+                                        <p className="text-secondary">{item['description']}</p>
                                     </li>
                                 )
                             })

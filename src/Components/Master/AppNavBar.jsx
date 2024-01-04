@@ -4,8 +4,9 @@ import Navbar from 'react-bootstrap/Navbar';
 import Link from "next/link";
 import UserDropDown from "@/components/Master/UserDropDown";
 import {useEffect, useState} from "react";
-import Cookies from "js-cookie";
 
+import Image from 'next/image';
+import Cookies from 'js-cookie';
 function AppNavBar(props) {
 
     let [searchKey,SetSearchKey]=useState("0");
@@ -13,6 +14,7 @@ function AppNavBar(props) {
 
     useEffect(() => {
         if(Cookies.get('token')){
+          
             SetLogin(true);
         }
         else {
@@ -20,7 +22,8 @@ function AppNavBar(props) {
         }
     }, []);
 
-
+    console.log("Navbar")
+    console.log("package cookie",Cookies.get())
 
     return (
         <div>
@@ -45,7 +48,7 @@ function AppNavBar(props) {
             <Navbar expand="lg" className="bg-white sticky-top shadow-sm">
                 <div className="container">
                     <div className="navbar-brand">
-                        <img className="nav-logo" src={"/images/logo.svg"} alt="img"/>
+                    <img className="nav-logo" src="/images/logo_white1.svg" alt="img"/>
                     </div>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
