@@ -20,6 +20,7 @@ SendEmail(emailto,emailtext,emailsubject)
 return NextResponse.json({status:"success",message:"Vaild Email"})
 
 
+
  }
  else{
     
