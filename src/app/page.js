@@ -1,9 +1,9 @@
+import PlainLayout from "@/Components/Master/Plain-Layout";
 
 export default function Home() {
   return (
    <div>
-    Home page 2
-    
+<PlainLayout/>    
    </div>
   )
 }

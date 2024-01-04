@@ -1,5 +1,12 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
+import NextTopLoader from 'nextjs-toploader'
+import '../../src/assets/css/dropdownmenu.css';
+import '../../src/assets/css/sidebar.css'
+import '../../src/assets/css/style.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap-icons/font/bootstrap-icons.css'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,7 +18,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head>
+      <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+  crossorigin="anonymous"
+/>
+      </head>
+      <body className={inter.className}>
+        <NextTopLoader/>
+        {children}
+        </body>
     </html>
   )
 }
