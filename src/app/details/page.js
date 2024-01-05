@@ -1,7 +1,7 @@
 import PopularList from "@/components/PopularList";
 import PlainLayout from "@/components/Master/Plain-Layout";
 import CommentsList from "@/components/CommentsList";
-import NewsDetails from "@/Components/NewsDetails";
+import NewsDetails from "@/components/NewsDetails";
 
 async function getData(id) {
     let Details = (await (await fetch(`${process.env.HOST}/api/News_list/details?id=${id}`)).json())['data']
@@ -12,9 +12,13 @@ async function getData(id) {
 
 
 const Page = async (props) => {
-
+console.log(props);
     let id=props.searchParams['id']
+  
     let data= await getData(id)
+    console.log("Details data",data);
+
+    console.log(props);
 
   return (
        <PlainLayout>

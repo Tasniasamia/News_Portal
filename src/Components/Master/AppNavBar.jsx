@@ -24,7 +24,7 @@ function AppNavBar(props) {
 
     console.log("Navbar")
     console.log("package cookie",Cookies.get())
-
+console.log( props.data['categories']);
     return (
         <div>
             <div className="py-2 bg-dark text-white container-fluid">
